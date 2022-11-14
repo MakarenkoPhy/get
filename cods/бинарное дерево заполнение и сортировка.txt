@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cstdlib>
+
+struct node{
+int data;
+ node* pleft;
+ node* pright;};
+
+ void insert(node** pproot, int value); //новый элемент
+ void inorder(node* proot);  //по порядку
+
+int main(){
+    node* proot = NULL;
+    insert(&proot, 10);
+    insert(&proot, 5);
+    insert(&proot, 7);
+    insert(&proot, 6);
+    insert(&proot, 14);
+    inorder(proot);
+    return 0;
+
+}
+void insert(node** pproot, int value){
+if (*pproot==NULL){
+    *pproot = new node;
+    if(*pproot==NULL){
+        std::cout<<"No memory available.\n";
+        std::exit(1);}
+    (*pproot)->data = value;
+    (*pproot)->pleft=NULL;
+    (*pproot)->pright=NULL;}
+else if(value<(*pproot)->data)
+    insert(&((*pproot)->pleft),value);
+else if(value>(*pproot)->data)
+    insert(&((*pproot)->pright),value);
+else
+    std::cout<<"duplicate\n";
+}
+
+void inorder(node* proot){
+if(proot!=NULL){
+    inorder(proot->pleft);
+    std::cout<<proot->data<<' ';
+    inorder(proot->pright);
+}
+}

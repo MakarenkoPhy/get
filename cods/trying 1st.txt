@@ -1,0 +1,24 @@
+#include <cmath>
+#include <iostream>
+
+int main()
+{
+int count1, count, n, a;
+count1=0;
+count=0;
+std::cin>>n;
+for(int i=0; i<pow(2,n);i++){
+    int p=0;
+    while(i>0){
+        a=i%2;
+        i=i/2;
+        if(a==1) count1++;
+        else count1 = 0;
+        if(count1==2){ 
+            p=1;
+            break;}
+    }
+        if(p==0) {count++;}
+}
+std::cout<<count;
+}

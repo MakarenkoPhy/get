@@ -1,0 +1,5 @@
+int comparator(const void* p, const void *q){
+    return*(int*)p - *(int*)q;
+}
+
+qsort(a,n,sizeof(int), comparator);

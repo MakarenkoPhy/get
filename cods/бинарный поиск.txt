@@ -1,0 +1,17 @@
+int a[10]={1 ,2, 5, 6, 8, 12, 15, 17, 25, 33};
+int l, m, r, k;
+std::cin>>k; //искомый элемент
+l=-1;
+r=10; //r=n
+while(r-l>1){
+    m=(l+r)/2;
+    if(a[m]==k){
+        std::cout<<m;
+        break;}
+    else if(a[m]>k)
+        r=m;
+    else
+        l=m;
+}
+if(r-l==1)
+    std::cout<<"No this number";

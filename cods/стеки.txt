@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstdlib>
+struct node{
+int data;
+node*p;};
+
+void push(int data, node**ptop);
+int pop(node** ptop);
+
+int main(){
+node* top=NULL;
+push(15,&top);
+std::cout<<pop(&top);
+}
+
+void push(int data, node**ptop){     //добавление нового элемента
+node* ptr = new node;
+if(ptr==NULL) {std::cout<<"no memory"; exit(1);}
+ptr->data=data;
+ptr->p=*ptop;
+*ptop=ptr;
+   }
+
+   int pop(node** ptop){     //вытаскивание последнего элемента
+   node* tmp;
+   int d;
+   if(*ptop==NULL) {std::cout<<"stack is empty"; exit(1);}
+   tmp=*ptop;
+   d=tmp->data;
+   (*ptop)=tmp->p;
+   delete tmp;
+   return d;
+   }
