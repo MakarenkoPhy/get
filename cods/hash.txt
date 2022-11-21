@@ -1,0 +1,28 @@
+#include <iostream>
+
+void insert(int* p, int n, int data);
+
+int main(){
+    int ht[10]={0};
+    insert(ht,10,5);
+    insert(ht,10,15);
+    insert(ht,10,25);
+    insert(ht,10,35);
+    insert(ht,10,45);
+    insert(ht,10,55);
+    insert(ht,10,65);
+    for(int i=0; i<10; i++) std::cout<<ht[i]<<" ";
+
+}
+
+void insert(int* p, int n, int data){
+    int i = data % n;
+    if(p[i]==0) p[i]=data;
+    else {
+        for(int j=i+1; j<n+i-1; j++){
+            if(p[j%n]==0) {
+                p[j%n]=data;
+                break;}
+        }
+    }
+}
